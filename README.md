@@ -29,7 +29,7 @@ My goal: **build robust, scalable and well-structured web applications.**
 
 **HBNB – Full-Stack Airbnb Clone**  
 
-**-> [holbertonschool-hbnb](https://github.com/TommyJOUHANSC28/holbertonschool-hbnb)**
+**-> [holbertonschool-hbnb](https://github.com/Tommy-JOUHANS/holbertonschool-hbnb)**
 
 • CLI application → REST API → Web interface  
 • Object-Oriented Programming  
