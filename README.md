@@ -82,7 +82,7 @@ My goal: **build robust, scalable and well-structured web applications.**
 | C           | Python    | HTML    | Git GitHub  |
 | JavaScript  | REST APIs | CSS     |  PyCharm  |
 | Python | File storage systems | JavaScript | Visual Studio Code |
-| HTML5/CSS3  | SQL (learning)| Postman |
+| HTML5/CSS3  | SQL (learning)|      | Postman |
 
 ---
 
