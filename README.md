@@ -27,6 +27,53 @@ My goal: **build robust, scalable and well-structured web applications.**
 
 ## 🔭 I’m currently working on
 
+**Team Formation and Idea Development** 
+
+**-> [portfolio](https://github.com/Tommy-JOUHANS/portfolio)**
+
+The platform allows SME clients to choose a service package from among 'CyberAudit & Solution' four offerings:
+
+• Service request via a structured form, receive an immediate email confirmation,
+
+• Track the progress of their case in real time, view clear vulnerability reports, and access awareness modules, all within a secure environment featuring role-based access control and JWT authentication.
+
+
+
+Authentication & Security
+    • Registration, login with JWT
+    • 2 roles (Admin / Client)
+    • Route protection & HTTP headers
+    • Password hashing + rate limiting
+![Photo](figma/image.png)
+![Photo](figma/image%20(1).png)
+![Photo](figma/image%20(2).png)
+
+
+Forms & Requests
+    •  Form with a selection of 4 service packages
+    •  Automatic confirmation email (Celery)
+    •  Admin dashboard: view and manage requests
+    •  Client dashboard: track statuses in real time
+    •  PDF report generation
+    •  Awareness and training module
+![Photo](figma/image%20(3).png)
+![Photo](figma/image%20(4).png)
+![Photo](figma/image%20(5).png)
+![Photo](figma/image%20(6).png)
+![Photo](figma/image%20(7).png)
+![Photo](figma/image%20(8).png)
+![Photo](figma/image%209.png)
+![Photo](figma/image%20(10).png)
+
+
+Technical & Deployment
+    • Secure REST API (Django REST Framework)
+    • PostgreSQL DB with performance indexes
+    • XSS protection (DOMPurify) + anti-SQL injection
+    • Cloud deployment with HTTPS
+    • Technical documentation and README
+
+
 **HBNB – Full-Stack Airbnb Clone**  
 
 **-> [holbertonschool-hbnb](https://github.com/Tommy-JOUHANS/holbertonschool-hbnb)**
@@ -81,8 +128,8 @@ My goal: **build robust, scalable and well-structured web applications.**
 |:-------- |:--------:|:--------:| --------:| 
 | C           | Python    | HTML    | Git GitHub  |
 | JavaScript  | REST APIs | CSS     |  PyCharm  |
-| Python | File storage systems | JavaScript | Visual Studio Code |
-| HTML5/CSS3  | SQL (learning)|      | Postman |
+| Python | File storage systems | JavaScript ES6 | Visual Studio Code |
+| HTML5/CSS3  | SQL (learning)|   React   | Postman |
 
 ---
 
