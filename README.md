@@ -27,6 +27,7 @@ My goal: **build robust, scalable and well-structured web applications.**
 
 ## 🔭 I’m currently working on
 
+
 **Team Formation and Idea Development** 
 
 **-> [portfolio](https://github.com/Tommy-JOUHANS/portfolio)**
@@ -39,7 +40,7 @@ The platform allows SME clients to choose a service package from among 'CyberAud
 
 
 
-Authentication & Security
+**Authentication & Security**
     • Registration, login with JWT
     • 2 roles (Admin / Client)
     • Route protection & HTTP headers
@@ -49,7 +50,8 @@ Authentication & Security
 ![Photo](figma/image%20(2).png)
 
 
-Forms & Requests
+
+**Forms & Requests**
     •  Form with a selection of 4 service packages
     •  Automatic confirmation email (Celery)
     •  Admin dashboard: view and manage requests
@@ -66,12 +68,16 @@ Forms & Requests
 ![Photo](figma/image%20(10).png)
 
 
-Technical & Deployment
+**Technical & Deployment**
     • Secure REST API (Django REST Framework)
     • PostgreSQL DB with performance indexes
     • XSS protection (DOMPurify) + anti-SQL injection
     • Cloud deployment with HTTPS
     • Technical documentation and README
+
+
+![Photo](figma/architecture.png)
+
 
 
 **HBNB – Full-Stack Airbnb Clone**  
