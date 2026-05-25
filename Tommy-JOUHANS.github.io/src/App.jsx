@@ -107,7 +107,7 @@ function Navbar({ activeSection }) {
 
 function Hero() {
   const [typed, setTyped] = useState('')
-  const fullText = 'Développeur Web & Mobile'
+  const fullText = 'Développeur Web & Web Mobile'
 
   useEffect(() => {
     let i = 0
