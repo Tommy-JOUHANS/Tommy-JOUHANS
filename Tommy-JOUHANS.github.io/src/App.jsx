@@ -107,7 +107,7 @@ function Navbar({ activeSection }) {
 
 function Hero() {
   const [typed, setTyped] = useState('')
-  const fullText = 'Développeur Web & Mobile en formation à Holberton School France'
+  const fullText = 'Développeur Web & Mobile'
 
   useEffect(() => {
     let i = 0
