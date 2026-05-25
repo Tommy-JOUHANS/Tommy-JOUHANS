@@ -107,7 +107,7 @@ function Navbar({ activeSection }) {
 
 function Hero() {
   const [typed, setTyped] = useState('')
-  const fullText = 'Développeur Full-Stack'
+  const fullText = 'Développeur Web & Mobile en formation à Holberton School France'
 
   useEffect(() => {
     let i = 0
@@ -370,7 +370,7 @@ function Resume() {
         <div className="resume-download">
           <p>Besoin d'une version complète ?</p>
           {/* Place ton CV PDF dans /public/cv-tommy-jouhans.pdf */}
-          <a href="/cv-tommy-jouhans.pdf" download className="btn btn-primary">
+          <a href={`${import.meta.env.BASE_URL}cv-tommy-jouhans.pdf`} download className="btn btn-primary">
             ⬇️ Télécharger mon CV (PDF)
           </a>
         </div>
