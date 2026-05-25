@@ -1,0 +1,524 @@
+import { useState, useEffect } from 'react'
+import './App.css'
+
+// ─── DONNÉES ─────────────────────────────────────────────────────────────────
+
+const SKILLS = {
+  'Langages': ['C', 'C#', 'C++', 'Python', 'PHP', 'Java', 'JavaScript'],
+  'Web': ['HTML', 'CSS', 'React', 'TypeScript', 'Node.js'],
+  'Frameworks': ['Flask', 'Django', 'Tailwind CSS'],
+  'Bases de données': ['PostgreSQL', 'MySQL', 'SQLite', 'MongoDB'],
+  'DevOps & Outils': ['Docker', 'Git', 'GitHub', 'Linux', 'VS Code'],
+  'Méthodes': ['Agile / Scrum', 'MVP', 'REST API', 'JWT Auth'],
+}
+
+const PROJECTS = [
+  {
+    title: 'CyberAudit & Solutions',
+    emoji: '🔐',
+    description:
+      'Plateforme web de gestion d\'audits cybersécurité pour PME/TPE. Authentification JWT, dashboards interactifs et génération automatique de rapports PDF.',
+    stack: ['React', 'Django', 'PostgreSQL', 'Python', 'Tailwind CSS', 'Redis', 'Celery'],
+    github: 'https://github.com/Tommy-JOUHANS',
+    demo: null,
+  },
+  {
+    title: 'HBnB – Clone AirBnB',
+    emoji: '🏠',
+    description:
+      'Application web complète inspirée d\'AirBnB, développée en Python. Modèle OOP, persistance JSON, API REST Flask-JWT, frontend HTML/CSS/JS. Projet d\'équipe (3 devs).',
+    stack: ['Python', 'Flask', 'JWT', 'HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/Tommy-JOUHANS',
+    demo: null,
+  },
+  {
+    title: 'Simple Shell – Interpréteur UNIX',
+    emoji: '💻',
+    description:
+      'Mini-shell UNIX développé en C : parsing de commandes, gestion des processus (fork/exec), pipes et redirections. Livré en 2 sprints Agile.',
+    stack: ['C', 'UNIX', 'Agile'],
+    github: 'https://github.com/Tommy-JOUHANS',
+    demo: null,
+  },
+  {
+    title: 'Monitoring Viticole IoT',
+    emoji: '🍇',
+    description:
+      'Système IoT de collecte de températures et d\'humidité dans 10 caves viticoles. Tableau de bord PHP/Java permettant aux vignerons de réduire les pertes thermiques.',
+    stack: ['IoT', 'PHP', 'Java', 'Capteurs'],
+    github: null,
+    demo: null,
+    note: 'Projet BTS – 2014',
+  },
+]
+
+const CERTIFICATIONS = [
+  'IBM – Agile Fundamentals',
+  'IBM – SQL',
+  'IBM – Project Management',
+  'IBM – Cloud Computing',
+  'IBM – Cybersecurity Fundamentals',
+  'IBM – Open-Source Software',
+]
+
+// ─── COMPOSANTS ──────────────────────────────────────────────────────────────
+
+function Navbar({ activeSection }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const links = [
+    { href: '#about', label: 'À propos' },
+    { href: '#skills', label: 'Compétences' },
+    { href: '#projects', label: 'Projets' },
+    { href: '#resume', label: 'CV' },
+    { href: '#contact', label: 'Contact' },
+  ]
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-inner">
+        <a href="#hero" className="navbar-logo">
+          <span className="mono">&lt;</span>TJ<span className="mono">/&gt;</span>
+        </a>
+        <button
+          className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+        >
+          <span /><span /><span />
+        </button>
+        <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+          {links.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className={activeSection === href.slice(1) ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
+function Hero() {
+  const [typed, setTyped] = useState('')
+  const fullText = 'Développeur Full-Stack'
+
+  useEffect(() => {
+    let i = 0
+    const timer = setInterval(() => {
+      if (i < fullText.length) {
+        setTyped(fullText.slice(0, i + 1))
+        i++
+      } else {
+        clearInterval(timer)
+      }
+    }, 60)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <section id="hero" className="hero">
+      <div className="hero-bg-grid" />
+      <div className="hero-content">
+        {/* Photo placeholder — remplace src par ton image */}
+        <div className="hero-avatar">
+          <img
+            src="/profile.jpg"
+            alt="Tommy JOUHANS"
+            onError={e => {
+              e.target.style.display = 'none'
+              e.target.nextSibling.style.display = 'flex'
+            }}
+          />
+          <div className="avatar-placeholder" style={{ display: 'none' }}>TJ</div>
+        </div>
+
+        <div className="hero-text">
+          <p className="hero-greeting mono">Bonjour, je suis</p>
+          <h1 className="hero-name">Tommy <span className="accent">JOUHANS</span></h1>
+          <h2 className="hero-role">
+            <span className="typed">{typed}</span>
+            <span className="cursor">|</span>
+          </h2>
+          <p className="hero-tagline">
+            En formation à <span className="accent">Holberton School France</span> · Disponible en alternance dès <strong>septembre 2026</strong>
+          </p>
+          <div className="hero-cta">
+            <a href="#projects" className="btn btn-primary">Voir mes projets</a>
+            <a href="#contact" className="btn btn-outline">Me contacter</a>
+          </div>
+          <div className="hero-socials">
+            <a href="https://github.com/Tommy-JOUHANS" target="_blank" rel="noopener" aria-label="GitHub">
+              <GitHubIcon />
+            </a>
+            <a href="https://linkedin.com/in/tommy-jouhans-pro" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <LinkedInIcon />
+            </a>
+            <a href="mailto:tommy.jouhans@outlook.com" aria-label="Email">
+              <EmailIcon />
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="#about" className="scroll-indicator">
+        <span className="mono">scroll</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      </a>
+    </section>
+  )
+}
+
+function About() {
+  return (
+    <section id="about" className="section">
+      <div className="container">
+        <SectionTitle number="01" title="À propos" />
+        <div className="about-grid">
+          <div className="about-text">
+            <p>
+              Développeur web et mobile en formation à <strong>Holberton School France</strong> (Dijon),
+              je possède de solides bases en programmation — C, JavaScript ES6, Python, Shell — et
+              un fort intérêt pour le domaine du <span className="accent">Full-Stack</span>.
+            </p>
+            <p>
+              Rigoureux et motivé, j'oriente mon parcours vers le développement de modèles
+              d'apprentissage automatique, l'analyse de données et l'intégration de solutions
+              intelligentes.
+            </p>
+            <p>
+              Je recherche une <strong>alternance de deux ans</strong> (dès septembre 2026) pour renforcer
+              mes compétences en Full-Stack, en traitement de données et en déploiement de modèles
+              au sein d'un environnement professionnel innovant.
+            </p>
+
+            <div className="about-details">
+              <div className="detail-item">
+                <span className="mono accent">📍</span>
+                <span>Chevigny-Saint-Sauveur (21)</span>
+              </div>
+              <div className="detail-item">
+                <span className="mono accent">🎓</span>
+                <span>Holberton School France – Titre RNCP niv. 5</span>
+              </div>
+              <div className="detail-item">
+                <span className="mono accent">🚗</span>
+                <span>Permis B</span>
+              </div>
+              <div className="detail-item">
+                <span className="mono accent">🏋️</span>
+                <span>Musculation · Randonnée · Jeux vidéo</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="about-langs">
+            <h3 className="subsection-title">Langues</h3>
+            <div className="lang-item">
+              <span>🇫🇷 Français</span>
+              <div className="lang-bar">
+                <div className="lang-fill" style={{ width: '100%' }}>C2 – Natif</div>
+              </div>
+            </div>
+            <div className="lang-item">
+              <span>🇬🇧 Anglais</span>
+              <div className="lang-bar">
+                <div className="lang-fill" style={{ width: '30%' }}>A2 – Intermédiaire</div>
+              </div>
+            </div>
+
+            <h3 className="subsection-title" style={{ marginTop: '2rem' }}>Certifications IBM 2026</h3>
+            <ul className="cert-list">
+              {CERTIFICATIONS.map(c => (
+                <li key={c}>
+                  <span className="cert-badge">IBM</span> {c.replace('IBM – ', '')}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="section section-alt">
+      <div className="container">
+        <SectionTitle number="02" title="Compétences" />
+        <div className="skills-grid">
+          {Object.entries(SKILLS).map(([category, items]) => (
+            <div key={category} className="skill-card">
+              <h3 className="skill-category">{category}</h3>
+              <div className="skill-tags">
+                {items.map(skill => (
+                  <span key={skill} className="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="section">
+      <div className="container">
+        <SectionTitle number="03" title="Projets" />
+        <div className="projects-grid">
+          {PROJECTS.map(project => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProjectCard({ project }) {
+  return (
+    <div className="project-card">
+      <div className="project-header">
+        <span className="project-emoji">{project.emoji}</span>
+        <div className="project-links">
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener" aria-label="GitHub" title="Voir sur GitHub">
+              <GitHubIcon size={18} />
+            </a>
+          )}
+          {project.demo && (
+            <a href={project.demo} target="_blank" rel="noopener" aria-label="Démo" title="Voir la démo">
+              <ExternalIcon size={18} />
+            </a>
+          )}
+        </div>
+      </div>
+      <h3 className="project-title">{project.title}</h3>
+      {project.note && <span className="project-note">{project.note}</span>}
+      <p className="project-desc">{project.description}</p>
+      <div className="project-stack">
+        {project.stack.map(tech => (
+          <span key={tech} className="stack-tag">{tech}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function Resume() {
+  return (
+    <section id="resume" className="section section-alt">
+      <div className="container">
+        <SectionTitle number="04" title="Parcours & CV" />
+        <div className="resume-grid">
+          <div className="timeline-col">
+            <h3 className="timeline-heading">🎓 Formation</h3>
+            <div className="timeline">
+              <TimelineItem
+                date="2025 – Présent"
+                title="Titre RNCP niv. 5 – Développeur web et web mobile"
+                place="Holberton School France, Dijon"
+                accent
+              />
+              <TimelineItem
+                date="2012 – 2015"
+                title="BTS IRIS – Informatique et Réseaux pour l'Industrie"
+                place="Lycée Fénelon Sainte-Marie, Lons-le-Saunier"
+              />
+              <TimelineItem
+                date="2009 – 2012"
+                title="Bac Pro Systèmes Électroniques et Numériques"
+                place="Lycée professionnel Saint-Joseph, Bourg-en-Bresse"
+              />
+            </div>
+          </div>
+
+          <div className="timeline-col">
+            <h3 className="timeline-heading">💼 Expériences</h3>
+            <div className="timeline">
+              <TimelineItem
+                date="Oct. 2025 – Présent"
+                title="Développeur web et web mobile en formation"
+                place="Holberton School France, Dijon"
+                accent
+              />
+              <TimelineItem
+                date="Jul. – Aoû. 2025"
+                title="Technicien maintenance et recyclage informatique"
+                place="Micronov, Bourg-en-Bresse"
+              />
+              <TimelineItem
+                date="2010 – 2013"
+                title="Technicien support et maintenance (Stages Bac Pro)"
+                place="Grand Bourg Habitat, Préfecture de l'Ain, SDIS 01…"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="resume-download">
+          <p>Besoin d'une version complète ?</p>
+          {/* Place ton CV PDF dans /public/cv-tommy-jouhans.pdf */}
+          <a href="/cv-tommy-jouhans.pdf" download className="btn btn-primary">
+            ⬇️ Télécharger mon CV (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TimelineItem({ date, title, place, accent }) {
+  return (
+    <div className={`timeline-item ${accent ? 'timeline-accent' : ''}`}>
+      <span className="timeline-date mono">{date}</span>
+      <strong className="timeline-title">{title}</strong>
+      <span className="timeline-place">{place}</span>
+    </div>
+  )
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="section">
+      <div className="container">
+        <SectionTitle number="05" title="Contact" />
+        <div className="contact-wrapper">
+          <p className="contact-intro">
+            Tu as un projet, une opportunité d'alternance ou simplement envie d'échanger ?
+            N'hésite pas à me contacter !
+          </p>
+          <div className="contact-cards">
+            <a href="mailto:tommy.jouhans@outlook.com" className="contact-card">
+              <EmailIcon size={28} />
+              <div>
+                <strong>Email</strong>
+                <span>tommy.jouhans@outlook.com</span>
+              </div>
+            </a>
+            <a href="https://github.com/Tommy-JOUHANS" target="_blank" rel="noopener" className="contact-card">
+              <GitHubIcon size={28} />
+              <div>
+                <strong>GitHub</strong>
+                <span>github.com/Tommy-JOUHANS</span>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/tommy-jouhans-pro" target="_blank" rel="noopener" className="contact-card">
+              <LinkedInIcon size={28} />
+              <div>
+                <strong>LinkedIn</strong>
+                <span>linkedin.com/in/tommy-jouhans-pro</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <p className="mono">
+        &lt; Fait avec 💙 par <span className="accent">Tommy JOUHANS</span> · {new Date().getFullYear()} /&gt;
+      </p>
+      <p className="footer-sub">
+        Holberton School France · Dijon
+      </p>
+    </footer>
+  )
+}
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function SectionTitle({ number, title }) {
+  return (
+    <div className="section-title">
+      <span className="section-number mono">{number}.</span>
+      <h2>{title}</h2>
+      <div className="title-line" />
+    </div>
+  )
+}
+
+function GitHubIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+  )
+}
+
+function LinkedInIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  )
+}
+
+function EmailIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </svg>
+  )
+}
+
+function ExternalIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  )
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [activeSection, setActiveSection] = useState('hero')
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]')
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -40% 0px' }
+    )
+    sections.forEach(s => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <>
+      <Navbar activeSection={activeSection} />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Resume />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  )
+}
