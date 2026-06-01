@@ -250,6 +250,23 @@
   line-height: 1.7;
 }
 
+/* Vidéo hero */
+.hero-video-wrapper {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  margin-top: 0.5rem;
+}
+
+.hero-video {
+  width: 100%;
+  display: block;
+  background: #000;
+}
+
 .hero-cta {
   display: flex;
   gap: 1rem;

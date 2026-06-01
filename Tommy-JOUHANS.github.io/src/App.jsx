@@ -149,6 +149,18 @@ function Hero() {
           <p className="hero-tagline">
             En formation à <span className="accent">Holberton School France</span> · Disponible en alternance dès <strong>septembre 2026</strong>
           </p>
+
+          <div className="hero-video-wrapper">
+            <video
+              src={`${import.meta.env.BASE_URL}intro.mp4`}
+              controls
+              playsInline
+              className="hero-video"
+            >
+              Votre navigateur ne supporte pas la lecture vidéo.
+            </video>
+          </div>
+
           <div className="hero-cta">
             <a href="#projects" className="btn btn-primary">Voir mes projets</a>
             <a href="#contact" className="btn btn-outline">Me contacter</a>
