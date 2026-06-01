@@ -129,7 +129,7 @@ function Hero() {
         {/* Photo placeholder — remplace src par ton image */}
         <div className="hero-avatar">
           <img
-            src="/profile.jpg"
+            src={`${import.meta.env.BASE_URL}profile.jpg`}
             alt="Tommy JOUHANS"
             onError={e => {
               e.target.style.display = 'none'
