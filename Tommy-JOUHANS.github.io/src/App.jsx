@@ -1,5 +1,17 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { Lock } from 'lucide-react'
+import { Home } from 'lucide-react'
+import { Computer } from 'lucide-react'
+import { Grape } from 'lucide-react'
+import { Briefcase } from 'lucide-react'
+import { GraduationCap } from 'lucide-react'
+import { Copyright } from 'lucide-react'
+import { Download } from 'lucide-react'
+import { Locate } from 'lucide-react'
+import { Car } from 'lucide-react'
+import { Dumbbell } from 'lucide-react'
+
 
 // ─── DONNÉES ─────────────────────────────────────────────────────────────────
 
@@ -15,7 +27,7 @@ const SKILLS = {
 const PROJECTS = [
   {
     title: 'CyberAudit & Solutions',
-    emoji: '🔐',
+    emoji: <Lock size={20} />,
     description:
       'Plateforme web de gestion d\'audits cybersécurité pour PME/TPE. Authentification JWT, dashboards interactifs et génération automatique de rapports PDF.',
     stack: ['React', 'Django', 'PostgreSQL', 'Python', 'Tailwind CSS', 'Redis', 'Celery'],
@@ -24,7 +36,7 @@ const PROJECTS = [
   },
   {
     title: 'HBnB – Clone AirBnB',
-    emoji: '🏠',
+    emoji: <Home size={20} />,
     description:
       'Application web complète inspirée d\'AirBnB, développée en Python. Modèle OOP, persistance JSON, API REST Flask-JWT, frontend HTML/CSS/JS. Projet d\'équipe (3 devs).',
     stack: ['Python', 'Flask', 'JWT', 'HTML', 'CSS', 'JavaScript'],
@@ -33,7 +45,7 @@ const PROJECTS = [
   },
   {
     title: 'Simple Shell – Interpréteur UNIX',
-    emoji: '💻',
+    emoji: <Computer size={20} />,
     description:
       'Mini-shell UNIX développé en C : parsing de commandes, gestion des processus (fork/exec), pipes et redirections. Livré en 2 sprints Agile.',
     stack: ['C', 'UNIX', 'Agile'],
@@ -42,7 +54,7 @@ const PROJECTS = [
   },
   {
     title: 'Monitoring Viticole IoT',
-    emoji: '🍇',
+    emoji: <Grape size={20} />,
     description:
       'Système IoT de collecte de températures et d\'humidité dans 10 caves viticoles. Tableau de bord PHP/Java permettant aux vignerons de réduire les pertes thermiques.',
     stack: ['IoT', 'PHP', 'Java', 'Capteurs'],
@@ -197,7 +209,7 @@ function About() {
           <div className="about-text">
             <p>
               Développeur web et mobile en formation à <strong>Holberton School France</strong> (Dijon),
-              je possède de solides bases en programmation — C, JavaScript ES6, Python, Shell — et
+              je possède de solides bases en programmation  C, JavaScript ES6, Python, Shell  et
               un fort intérêt pour le domaine du <span className="accent">Full-Stack</span>.
             </p>
             <p>
@@ -213,19 +225,19 @@ function About() {
 
             <div className="about-details">
               <div className="detail-item">
-                <span className="mono accent">📍</span>
+                <span className="mono accent"><Locate /></span>
                 <span>Chevigny-Saint-Sauveur (21)</span>
               </div>
               <div className="detail-item">
-                <span className="mono accent">🎓</span>
-                <span>Holberton School France – Titre RNCP niv. 5</span>
+                <span className="mono accent"><GraduationCap /></span>
+                <span>Holberton School France : Titre RNCP niv. 5</span>
               </div>
               <div className="detail-item">
-                <span className="mono accent">🚗</span>
+                <span className="mono accent"><Car /></span>
                 <span>Permis B</span>
               </div>
               <div className="detail-item">
-                <span className="mono accent">🏋️</span>
+                <span className="mono accent"><Dumbbell /></span>
                 <span>Musculation · Randonnée · Jeux vidéo</span>
               </div>
             </div>
@@ -335,29 +347,29 @@ function Resume() {
         <SectionTitle number="04" title="Parcours & CV" />
         <div className="resume-grid">
           <div className="timeline-col">
-            <h3 className="timeline-heading">🎓 Formation</h3>
+            <h3 className="timeline-heading"><GraduationCap size={20} /> Formation</h3>
             <div className="timeline">
               <TimelineItem
                 date="2025 – Présent"
-                title="Titre RNCP niv. 5 – Développeur web et web mobile"
+                title="Titre RNCP niveau 5 : Développeur web et web mobile"
                 place="Holberton School France, Dijon"
                 accent
               />
               <TimelineItem
                 date="2012 – 2015"
-                title="BTS IRIS – Informatique et Réseaux pour l'Industrie"
+                title="BTS IRIS : Informatique et Réseaux pour l'Industrie"
                 place="Lycée Fénelon Sainte-Marie, Lons-le-Saunier"
               />
               <TimelineItem
                 date="2009 – 2012"
-                title="Bac Pro Systèmes Électroniques et Numériques"
+                title="Bac Pro SEN : Systèmes Électroniques et Numériques"
                 place="Lycée professionnel Saint-Joseph, Bourg-en-Bresse"
               />
             </div>
           </div>
 
           <div className="timeline-col">
-            <h3 className="timeline-heading">💼 Expériences</h3>
+            <h3 className="timeline-heading"><Briefcase size={20} /> Expériences</h3>
             <div className="timeline">
               <TimelineItem
                 date="Oct. 2025 – Présent"
@@ -383,7 +395,7 @@ function Resume() {
           <p>Besoin d'une version complète ?</p>
           {/* Place ton CV PDF dans /public/cv-tommy-jouhans.pdf */}
           <a href={`${import.meta.env.BASE_URL}cv-tommy-jouhans.pdf`} download className="btn btn-primary">
-            ⬇️ Télécharger mon CV (PDF)
+            <Download /> Télécharger mon CV (PDF)
           </a>
         </div>
       </div>
@@ -443,12 +455,10 @@ function Contact() {
 function Footer() {
   return (
     <footer className="footer">
-      <p className="mono">
-        &lt; Fait avec 💙 par <span className="accent">Tommy JOUHANS</span> · {new Date().getFullYear()} /&gt;
+      <p className="mono" >
+       <Copyright />  {new Date().getFullYear()} | <span className="accent">Tommy JOUHANS</span> | <span className="accent">Holberton School France</span> | <span className="accent">Dijon</span>
       </p>
-      <p className="footer-sub">
-        Holberton School France · Dijon
-      </p>
+      
     </footer>
   )
 }
