@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react()],
   // Repo projet GitHub Pages → base = '/NomDuRepo/'
   // Change 'Tommy-JOUHANS' si ton repo a un autre nom
-  base: '/Tommy-JOUHANS/',
+  base: '/',
 })
