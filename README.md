@@ -38,7 +38,7 @@ The platform allows SME clients to choose a service package from among 'CyberAud
 
 • Track the progress of their case in real time, view clear vulnerability reports, and access awareness modules, all within a secure environment featuring role-based access control and JWT authentication.
 
-
+---
 
 **Authentication & Security**
     • Registration, login with JWT
@@ -49,7 +49,7 @@ The platform allows SME clients to choose a service package from among 'CyberAud
 ![Photo](figma/image%20(1).png)
 ![Photo](figma/image%20(2).png)
 
-
+---
 
 **Forms & Requests**
     •  Form with a selection of 4 service packages
@@ -67,6 +67,7 @@ The platform allows SME clients to choose a service package from among 'CyberAud
 ![Photo](figma/image%209.png)
 ![Photo](figma/image%20(10).png)
 
+---
 
 **Technical & Deployment**
     • Secure REST API (Django REST Framework)
@@ -78,7 +79,7 @@ The platform allows SME clients to choose a service package from among 'CyberAud
 
 ![Photo](figma/architecture.png)
 
-
+---
 
 **HBNB – Full-Stack Airbnb Clone**  
 
