@@ -6,7 +6,6 @@ import { Computer } from 'lucide-react'
 import { Grape } from 'lucide-react'
 import { Briefcase } from 'lucide-react'
 import { GraduationCap } from 'lucide-react'
-import { Copyright } from 'lucide-react'
 import { Download } from 'lucide-react'
 import { Locate } from 'lucide-react'
 import { Car } from 'lucide-react'
@@ -90,7 +89,7 @@ function Navbar({ activeSection }) {
     <nav className="navbar">
       <div className="navbar-inner">
         <a href="#hero" className="navbar-logo">
-          <span className="mono">&lt;</span>TJ<span className="mono">/&gt;</span>
+          <span className="mono">&lt;</span>Tommy JOUHANS<span className="mono">/&gt;</span>
         </a>
         <button
           className={`menu-toggle ${menuOpen ? 'open' : ''}`}
@@ -148,7 +147,7 @@ function Hero() {
               e.target.nextSibling.style.display = 'flex'
             }}
           />
-          <div className="avatar-placeholder" style={{ display: 'none' }}>TJ</div>
+          <div className="avatar-placeholder" style={{ display: 'none' }}>TommyJOUHANS</div>
         </div>
 
         <div className="hero-text">
@@ -162,16 +161,7 @@ function Hero() {
             En formation à <span className="accent">Holberton School France</span> · Disponible en alternance dès <strong>septembre 2026</strong>
           </p>
 
-          <div className="hero-video-wrapper">
-            <video
-              src={`${import.meta.env.BASE_URL}intro.mp4`}
-              controls
-              playsInline
-              className="hero-video"
-            >
-              Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
-          </div>
+
 
           <div className="hero-cta">
             <a href="#projects" className="btn btn-primary">Voir mes projets</a>
@@ -190,12 +180,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      <a href="#about" className="scroll-indicator">
-        <span className="mono">scroll</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      </a>
+
     </section>
   )
 }
@@ -210,7 +195,7 @@ function About() {
             <p>
               Développeur web et mobile en formation à <strong>Holberton School France</strong> (Dijon),
               je possède de solides bases en programmation  C, JavaScript ES6, Python, Shell  et
-              un fort intérêt pour le domaine du <span className="accent">Full-Stack</span>.
+              un fort intérêt pour le domaine de la <span className="accent">Cybersecurité</span> et du <span className="accent">Full-Stack</span>.
             </p>
             <p>
               Rigoureux et motivé, j'oriente mon parcours vers le développement de modèles
@@ -219,7 +204,7 @@ function About() {
             </p>
             <p>
               Je recherche une <strong>alternance de deux ans</strong> (dès septembre 2026) pour renforcer
-              mes compétences en Full-Stack, en traitement de données et en déploiement de modèles
+              mes compétences en Full-Stack et en Cybersecurité, en traitement de données et en déploiement de modèles
               au sein d'un environnement professionnel innovant.
             </p>
 
@@ -340,6 +325,8 @@ function ProjectCard({ project }) {
   )
 }
 
+
+
 function Resume() {
   return (
     <section id="resume" className="section section-alt">
@@ -355,15 +342,18 @@ function Resume() {
                 place="Holberton School France, Dijon"
                 accent
               />
+
               <TimelineItem
                 date="2012 – 2015"
                 title="BTS IRIS : Informatique et Réseaux pour l'Industrie"
                 place="Lycée Fénelon Sainte-Marie, Lons-le-Saunier"
+                image={`${import.meta.env.BASE_URL}bts_iris.jpg`}
               />
               <TimelineItem
                 date="2009 – 2012"
                 title="Bac Pro SEN : Systèmes Électroniques et Numériques"
                 place="Lycée professionnel Saint-Joseph, Bourg-en-Bresse"
+                image={`${import.meta.env.BASE_URL}bac_pro_sen.jpg`}
               />
             </div>
           </div>
@@ -403,12 +393,55 @@ function Resume() {
   )
 }
 
-function TimelineItem({ date, title, place, accent }) {
+
+function TimelineItem({ date, title, place, accent, image }) {
+  const [zoom, setZoom] = useState(false)
+
   return (
     <div className={`timeline-item ${accent ? 'timeline-accent' : ''}`}>
       <span className="timeline-date mono">{date}</span>
       <strong className="timeline-title">{title}</strong>
       <span className="timeline-place">{place}</span>
+
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          onClick={() => setZoom(true)}
+          style={{
+            width: 200,
+            transform: 'rotate(90deg)',
+            marginLeft: 40,
+            cursor: 'zoom-in',
+          }}
+        />
+      )}
+
+      {zoom && (
+        <div
+          onClick={() => setZoom(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            cursor: 'zoom-out',
+          }}
+        >
+          <img
+            src={image}
+            alt={title}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              transform: 'rotate(90deg)',
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }
@@ -456,9 +489,13 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="mono" >
-       <Copyright />  {new Date().getFullYear()} | <span className="accent">Tommy JOUHANS</span> | <span className="accent">Holberton School France</span> | <span className="accent">Dijon</span>
+       Copyright © {new Date().getFullYear()} <span className="accent">
+            Tommy JOUHANS
+          </span>
+          . Tous droits réservés.
+
       </p>
-      
+
     </footer>
   )
 }
