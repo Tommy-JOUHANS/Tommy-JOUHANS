@@ -6,15 +6,15 @@
 }
 
 :root {
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-card: #1c2128;
-  --accent: #58a6ff;
+  --bg-primary: #4bb8c2;
+  --bg-secondary: #369fb7;
+  --bg-card: #b4b5d5;
+  --accent: #240eb5;
   --accent-glow: rgba(88, 166, 255, 0.15);
-  --accent-2: #3fb950;
+  --accent-2: #2f31aa;
   --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --border: #30363d;
+  --text-secondary: #260f4b;
+  --border: #361e62;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --font-sans: 'Inter', system-ui, sans-serif;
 }

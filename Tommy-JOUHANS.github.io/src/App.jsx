@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { Lock } from 'lucide-react'
+import { Lock, Phone } from 'lucide-react'
 import { Home } from 'lucide-react'
 import { Computer } from 'lucide-react'
 import { Grape } from 'lucide-react'
@@ -30,7 +30,7 @@ const PROJECTS = [
     description:
       'Plateforme web de gestion d\'audits cybersécurité pour PME/TPE. Authentification JWT, dashboards interactifs et génération automatique de rapports PDF.',
     stack: ['React', 'Django', 'PostgreSQL', 'Python', 'Tailwind CSS', 'Redis', 'Celery'],
-    github: 'https://github.com/Tommy-JOUHANS',
+    github: 'https://github.com/Tommy-JOUHANS/portfolio',
     demo: null,
   },
   {
@@ -39,7 +39,7 @@ const PROJECTS = [
     description:
       'Application web complète inspirée d\'AirBnB, développée en Python. Modèle OOP, persistance JSON, API REST Flask-JWT, frontend HTML/CSS/JS. Projet d\'équipe (3 devs).',
     stack: ['Python', 'Flask', 'JWT', 'HTML', 'CSS', 'JavaScript'],
-    github: 'https://github.com/Tommy-JOUHANS',
+    github: 'https://github.com/Tommy-JOUHANS/holbertonschool-hbnb',
     demo: null,
   },
   {
@@ -48,7 +48,7 @@ const PROJECTS = [
     description:
       'Mini-shell UNIX développé en C : parsing de commandes, gestion des processus (fork/exec), pipes et redirections. Livré en 2 sprints Agile.',
     stack: ['C', 'UNIX', 'Agile'],
-    github: 'https://github.com/Tommy-JOUHANS',
+    github: 'https://github.com/Thorgalix/holbertonschool-simple_shell',
     demo: null,
   },
   {
@@ -70,6 +70,11 @@ const CERTIFICATIONS = [
   'IBM – Cloud Computing',
   'IBM – Cybersecurity Fundamentals',
   'IBM – Open-Source Software',
+  'IBM – Cybersecurity',
+  'IBM - Containerization with Docker',
+  'IBM - Kubernetes',
+  
+  
 ]
 
 // ─── COMPOSANTS ──────────────────────────────────────────────────────────────
@@ -462,6 +467,13 @@ function Contact() {
               <div>
                 <strong>Email</strong>
                 <span>tommy.jouhans@outlook.com</span>
+              </div>
+            </a>
+            <a href="tel:0641260266" className="contact-card">
+              <Phone size={28} />
+              <div>
+                <strong>Téléphone</strong>
+                <span>06.41.26.02.66</span>
               </div>
             </a>
             <a href="https://github.com/Tommy-JOUHANS" target="_blank" rel="noopener" className="contact-card">
