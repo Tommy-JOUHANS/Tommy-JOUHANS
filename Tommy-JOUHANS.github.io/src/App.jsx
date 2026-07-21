@@ -83,6 +83,7 @@ function Navbar({ activeSection }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const links = [
+    {href: '#article', label: 'Présentation' },
     { href: '#about', label: 'À propos' },
     { href: '#skills', label: 'Compétences' },
     { href: '#projects', label: 'Projets' },
@@ -257,6 +258,56 @@ function About() {
               ))}
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Welcome() {
+  return (
+    <section id="article" className="section section-alt">
+      <div className="container">
+        <SectionTitle number="00" title="Présentation" />
+        <div className="article-content">
+          <p>
+            Bienvenue à tous! Je m'appelle Tommy JOUHANS, je suis technicien en informatique et développeur web et mobile! Ici, vous trouverez un aperçu de mes compétences, de mes projets et de mon parcours professionnel. 
+            Je suis passionné par le développement web et mobile, et je cherche constamment à améliorer mes compétences et à relever de nouveaux défis.
+          </p>
+          <p>
+            N'hésitez pas à parcourir les différentes sections pour en savoir plus sur moi et mes réalisations. 
+            Si vous avez des questions ou souhaitez collaborer, n'hésitez pas à me contacter !
+          </p>
+          <p>
+            Par exemple, je suis fier de partager que notre portfolio CyberAudit & Solutions vient d'être validé à 87% à Holberton School Dijon !
+          </p>
+          <p>
+            Un projet full-stack de A à Z : backend Django/DRF, authentification JWT, génération de rapports PDF avec WeasyPrint + Celery, interface React connectée à une vraie API REST.
+            Un grand merci à <a href="https://www.linkedin.com/in/james-roussel-7311592b9/" target="_blank" rel="noopener">James</a> (mon coéquipier) qui a porté ce projet avec moi du début à la fin, ainsi qu'à <a href="https://www.linkedin.com/in/fchavonet/" target="_blank" rel="noopener">Fabien</a> (SWE),  
+            <a href="https://www.linkedin.com/in/ornella-tobiet/" target="_blank" rel="noopener"> Ornela</a> (Directrice campus) et <a href="https://www.linkedin.com/in/maneh21/" target="_blank" rel="noopener">Maneh</a> (SSM) pour leur accompagnement tout au long de la formation.
+          </p>
+          <p>
+            Ce diplôme Holberton ouvre la voie au Titre RNCP 5 dans 3 mois, la suite commence maintenant.
+            
+          </p>
+          
+          <p>
+            Vous pouvez consulter mon application web sur <a href="https://portfolio-kappa-dun-65.vercel.app/" target="_blank" rel="noopener">CyberAudit & Solutions</a>,
+            et le code source du projet sur <a href="https://github.com/Tommy-JOUHANS/portfolio" target="_blank" rel="noopener">Github</a> et découvrir le résultat final ci-dessous.
+          </p>
+          
+          <p>
+            <b>#Holberton #Python #Django #React #CyberSecurity #Portfolio #Dev</b>
+          </p>
+          <img src={`${import.meta.env.BASE_URL}portfolio.png`} 
+          alt="Resultat Portfolio"
+          style={{
+          width: "100%",
+          borderRadius: "10px",
+          margin: "20px 0",
+        }} />
+        <p>Resultats officiels de notre portfolio à Holberton School Dijon.</p>
+          
         </div>
       </div>
     </section>
@@ -498,13 +549,27 @@ function Contact() {
 }
 
 function Footer() {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
+    }, 1000); // Mise à jour chaque seconde
+
+    return () => clearInterval(interval);
+  }, []);
   return (
+    
     <footer className="footer">
       <p className="mono" >
-       Copyright © {new Date().getFullYear()} <span className="accent">
-            Tommy JOUHANS
-          </span>
-          . Tous droits réservés.
+       Copyright ©{" "}
+      {date.getDate()}/
+      {date.getMonth() + 1}/
+      {date.getFullYear()}{" "}
+      {String(date.getHours()).padStart(2, "0")}:
+      {String(date.getMinutes()).padStart(2, "0")}:
+      {String(date.getSeconds()).padStart(2, "0")},
+      Tommy JOUHANS. Tous droits réservés.
 
       </p>
 
@@ -583,6 +648,7 @@ export default function App() {
       <Navbar activeSection={activeSection} />
       <main>
         <Hero />
+        <Welcome />
         <About />
         <Skills />
         <Projects />
