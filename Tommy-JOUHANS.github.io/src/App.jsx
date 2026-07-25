@@ -124,7 +124,7 @@ function Navbar({ activeSection }) {
 
 function Hero() {
   const [typed, setTyped] = useState('')
-  const fullText = 'Développeur Web & Web Mobile'
+  const fullText = 'Technicien Informatique et Réseaux (Compétences Dev Junior)'
 
   useEffect(() => {
     let i = 0
@@ -164,7 +164,7 @@ function Hero() {
             <span className="cursor">|</span>
           </h2>
           <p className="hero-tagline">
-            En formation à <span className="accent">Holberton School France</span> · Disponible en alternance dès <strong>septembre 2026</strong>
+            En formé à <span className="accent">Holberton School France</span> · Disponible dès <strong>maintenant</strong>
           </p>
 
 
@@ -211,7 +211,7 @@ function About() {
             <p>
               Je recherche une <strong>alternance de deux ans</strong> (dès septembre 2026) pour renforcer
               mes compétences en Full-Stack et en Cybersecurité, en traitement de données et en déploiement de modèles
-              au sein d'un environnement professionnel innovant.
+              au sein d'un environnement professionnel innovant. Afin d'avoir une opportunité de travailler au sein d'une équipe dynamique.
             </p>
 
             <div className="about-details">
@@ -245,7 +245,7 @@ function About() {
             <div className="lang-item">
               <span>🇬🇧 Anglais</span>
               <div className="lang-bar">
-                <div className="lang-fill" style={{ width: '30%' }}>A2 – Intermédiaire</div>
+                <div className="lang-fill" style={{ width: '60%' }}>B1 – Professionel</div>
               </div>
             </div>
 
