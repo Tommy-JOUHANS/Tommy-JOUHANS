@@ -39,5 +39,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.tommy-jouhans.fr",
 ]
 
+
 GETQR_STATS_URL = os.getenv("GETQR_STATS_URL")
 GETQR_COOKIE = os.getenv("GETQR_COOKIE")
