@@ -76,7 +76,21 @@ const CERTIFICATIONS = [
   
   
 ]
+const QR_API = "http://127.0.0.1:8000/api/qr-stats/"
 
+const STATS = [
+  { label: 'Projets réalisés', value: '4+' },
+  { label: 'Technologies utilisées', value: '20+' },
+  { label: 'Projet validé', value: '87%' },
+  { label: 'Certifications IBM', value: '9' },
+]
+
+const ACHIEVEMENTS = [
+  'Projet CyberAudit & Solutions validé à 87% à Holberton School',
+  'Développement complet d’une application full-stack React + Django',
+  'Mise en place d’authentification JWT et génération de rapports PDF',
+  'Travail en équipe sur plusieurs projets Agile / Scrum',
+]
 // ─── COMPOSANTS ──────────────────────────────────────────────────────────────
 
 function Navbar({ activeSection }) {
@@ -191,6 +205,89 @@ function Hero() {
   )
 }
 
+function QrStats() {
+
+  const [qrData, setQrData] = useState(null)
+  const [error, setError] = useState(null)
+
+
+  useEffect(() => {
+
+    fetch(QR_API)
+
+      .then(res => {
+
+        if (!res.ok) {
+          throw new Error("Erreur API QR")
+        }
+
+        return res.json()
+
+      })
+
+      .then(data => {
+
+        console.log("QR DATA :", data)
+
+        setQrData(data)
+
+      })
+
+      .catch(err => {
+
+        console.error(err)
+
+        setError(err.message)
+
+      })
+
+
+  }, [])
+
+
+  if(error){
+    return (
+      <div className="stat-card">
+        Erreur : {error}
+      </div>
+    )
+  }
+
+
+  return (
+
+    <>
+
+      <div className="stat-card">
+
+        <span className="stat-value">
+          {qrData?.scans ?? "..."}
+        </span>
+
+        <span className="stat-label">
+          Scans QR Code
+        </span>
+
+      </div>
+
+
+      <div className="stat-card">
+
+        <span className="stat-value">
+          {qrData?.uniqueScans ?? "..."}
+        </span>
+
+        <span className="stat-label">
+          Visiteurs uniques
+        </span>
+
+      </div>
+
+    </>
+
+  )
+}
+
 function About() {
   return (
     <section id="about" className="section">
@@ -219,6 +316,7 @@ function About() {
                 <span className="mono accent"><Locate /></span>
                 <span>Chevigny-Saint-Sauveur (21)</span>
               </div>
+                            
               <div className="detail-item">
                 <span className="mono accent"><GraduationCap /></span>
                 <span>Holberton School France : Titre RNCP niv. 5</span>
@@ -232,7 +330,33 @@ function About() {
                 <span>Musculation · Randonnée · Jeux vidéo</span>
               </div>
             </div>
+            
           </div>
+          {/* Résultats chiffrés */}
+              <div className="profile-stats">
+                <h3 className="subsection-title">Résultats chiffrés</h3>
+                <div className="stats-grid">
+                  {STATS.map(stat => (
+                    <div key={stat.label} className="stat-card">
+                      <span className="stat-value">{stat.value}</span>
+                      <span className="stat-label">{stat.label}</span>
+                    </div>
+                    
+                  ))}
+                  
+                </div>
+                <QrStats />
+              </div>
+
+              {/* Réalisations concrètes */}
+              <div className="profile-achievements">
+                <h3 className="subsection-title">Réalisations concrètes</h3>
+                <ul className="achievement-list">
+                  {ACHIEVEMENTS.map(item => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
 
           <div className="about-langs">
             <h3 className="subsection-title">Langues</h3>
@@ -245,7 +369,7 @@ function About() {
             <div className="lang-item">
               <span>🇬🇧 Anglais</span>
               <div className="lang-bar">
-                <div className="lang-fill" style={{ width: '60%' }}>B1 – Professionel</div>
+                <div className="lang-fill" style={{ width: '75%' }}>B2 – Courant</div>
               </div>
             </div>
 
@@ -424,14 +548,19 @@ function Resume() {
                 accent
               />
               <TimelineItem
-                date="Jul. – Aoû. 2025"
+                date="Jul. – Sept. 2025"
                 title="Technicien maintenance et recyclage informatique"
                 place="Micronov, Bourg-en-Bresse"
               />
               <TimelineItem
+                date="Sept. 2015 - Juin 2025"
+                title="Technicien informatique à distance (Support et maintenance)"
+                place="Autogrill au site d’Arlay (A39), rattaché au siège social de Marseille (télétravail)"
+              />
+              <TimelineItem
                 date="2010 – 2013"
                 title="Technicien support et maintenance (Stages Bac Pro)"
-                place="Grand Bourg Habitat, Préfecture de l'Ain, SDIS 01…"
+                place="Grand Bourg Habitat, Préfecture de l'Ain, SDIS 01, Dynacité, Centre Hospitalier de Bourg-en-Bresse"
               />
             </div>
           </div>
