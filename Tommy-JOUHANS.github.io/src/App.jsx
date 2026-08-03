@@ -77,7 +77,7 @@ const CERTIFICATIONS = [
   
 ]
 const QR_API =
-  "https://tommy-backend.up.railway.app/api/qr-stats/"
+  "https://tommy-jouhans-production.up.railway.app/api/qr-stats/"
 
 const STATS = [
   { label: 'Projets réalisés', value: '4+' },
