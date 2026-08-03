@@ -77,7 +77,7 @@ const CERTIFICATIONS = [
   
 ]
 const QR_API =
-  "https://tommy-jouhans-production.up.railway.app/api/qr-stats/"
+  'https://tommy-jouhans-production.up.railway.app/api/qr-stats/'
 
 const STATS = [
   { label: 'Projets réalisés', value: '4+' },
@@ -207,85 +207,79 @@ function Hero() {
 }
 
 function QrStats() {
-
   const [qrData, setQrData] = useState(null)
-  const [error, setError] = useState(null)
-
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const controller = new AbortController()
 
-    fetch(QR_API)
+    async function loadQrStats() {
+      try {
+        const response = await fetch(QR_API, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          },
+          signal: controller.signal,
+        })
 
-      .then(res => {
-
-        if (!res.ok) {
-          throw new Error("Erreur API QR")
+        if (!response.ok) {
+          throw new Error(`Erreur API HTTP ${response.status}`)
         }
 
-        return res.json()
+        const data = await response.json()
 
-      })
+        setQrData({
+          scans: data.scans ?? 0,
+          uniqueScans: data.uniqueScans ?? 0,
+        })
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Erreur QR :', err)
+          setError(err.message)
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
 
-      .then(data => {
+    loadQrStats()
 
-        console.log("QR DATA :", data)
-
-        setQrData(data)
-
-      })
-
-      .catch(err => {
-
-        console.error(err)
-
-        setError(err.message)
-
-      })
-
-
+    return () => controller.abort()
   }, [])
 
-
-  if(error){
+  if (loading) {
     return (
       <div className="stat-card">
-        Erreur : {error}
+        <span className="stat-value">...</span>
+        <span className="stat-label">Chargement des statistiques</span>
       </div>
     )
   }
 
+  if (error) {
+    return (
+      <div className="stat-card">
+        <span className="stat-label">
+          Statistiques temporairement indisponibles
+        </span>
+      </div>
+    )
+  }
 
   return (
-
     <>
-
       <div className="stat-card">
-
-        <span className="stat-value">
-          {qrData?.scans ?? "..."}
-        </span>
-
-        <span className="stat-label">
-          Scans QR Code
-        </span>
-
+        <span className="stat-value">{qrData.scans}</span>
+        <span className="stat-label">Scans QR Code</span>
       </div>
 
-
       <div className="stat-card">
-
-        <span className="stat-value">
-          {qrData?.uniqueScans ?? "..."}
-        </span>
-
-        <span className="stat-label">
-          Visiteurs uniques
-        </span>
-
+        <span className="stat-value">{qrData.uniqueScans}</span>
+        <span className="stat-label">Visiteurs uniques</span>
       </div>
-
     </>
-
   )
 }
 
