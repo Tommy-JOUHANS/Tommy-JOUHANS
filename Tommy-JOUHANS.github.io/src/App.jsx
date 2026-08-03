@@ -76,9 +76,9 @@ const CERTIFICATIONS = [
   
   
 ]
-const QR_API = import.meta.env.DEV
-  ? 'http://127.0.0.1:8000/api/qr-stats/'
-  : 'https://tommy-jouhans-production.up.railway.app/api/qr-stats/'
+
+const QR_API =
+  "https://tommy-jouhans-production.up.railway.app/api/qr-stats/";
 
 const STATS = [
   { label: 'Projets réalisés', value: '4+' },
