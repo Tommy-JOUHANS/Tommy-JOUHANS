@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "Tommy-JOUHANS.github.io/**"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:
@@ -19,6 +22,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: Tommy-JOUHANS.github.io
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,6 +35,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: Tommy-JOUHANS.github.io/package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -49,7 +57,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: Tommy-JOUHANS.github.io/dist
 
   deploy:
     needs: build
