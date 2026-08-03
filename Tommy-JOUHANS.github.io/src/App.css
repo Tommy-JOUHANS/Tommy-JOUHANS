@@ -883,3 +883,14 @@ font-size:.9rem;
 opacity:.8;
 
 }
+
+.qr-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-card-error {
+  grid-column: 1 / -1;
+}

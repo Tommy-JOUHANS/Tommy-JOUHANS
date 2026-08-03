@@ -76,7 +76,9 @@ const CERTIFICATIONS = [
   
   
 ]
-const QR_API = import.meta.env.VITE_QR_API;
+const QR_API = import.meta.env.DEV
+  ? 'http://127.0.0.1:8000/api/qr-stats/'
+  : 'https://tommy-jouhans-production.up.railway.app/api/qr-stats/'
 
 const STATS = [
   { label: 'Projets réalisés', value: '4+' },
@@ -215,6 +217,8 @@ function QrStats() {
 
     async function loadQrStats() {
       try {
+        console.log('API QR utilisée :', QR_API)
+
         const response = await fetch(QR_API, {
           method: 'GET',
           headers: {
@@ -250,25 +254,29 @@ function QrStats() {
 
   if (loading) {
     return (
-      <div className="stat-card">
-        <span className="stat-value">...</span>
-        <span className="stat-label">Chargement des statistiques</span>
+      <div className="qr-stats-grid">
+        <div className="stat-card">
+          <span className="stat-value">...</span>
+          <span className="stat-label">Chargement des statistiques</span>
+        </div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="stat-card">
-        <span className="stat-label">
-          Statistiques temporairement indisponibles
-        </span>
+      <div className="qr-stats-grid">
+        <div className="stat-card stat-card-error">
+          <span className="stat-label">
+            Statistiques temporairement indisponibles
+          </span>
+        </div>
       </div>
     )
   }
 
   return (
-    <>
+    <div className="qr-stats-grid">
       <div className="stat-card">
         <span className="stat-value">{qrData.scans}</span>
         <span className="stat-label">Scans QR Code</span>
@@ -278,7 +286,7 @@ function QrStats() {
         <span className="stat-value">{qrData.uniqueScans}</span>
         <span className="stat-label">Visiteurs uniques</span>
       </div>
-    </>
+    </div>
   )
 }
 
