@@ -76,7 +76,7 @@ const CERTIFICATIONS = [
   
   
 ]
-const QR_API = "http://127.0.0.1:8000/api/qr-stats/"
+const QR_API ="https://tommy-backend.up.railway.app/api/qr-stats/"
 
 const STATS = [
   { label: 'Projets réalisés', value: '4+' },
