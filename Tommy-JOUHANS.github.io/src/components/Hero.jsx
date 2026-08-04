@@ -2,6 +2,7 @@ import { memo, useEffect, useState } from 'react'
 import { SITE, SOCIALS } from '../data/site'
 import { assetUrl } from '../utils/assetUrl'
 import { GitHubIcon, LinkedInIcon, EmailIcon } from './icons'
+import SafeHtml from './SafeHtml'
 
 const SOCIAL_ICONS = {
   github: GitHubIcon,
@@ -52,9 +53,7 @@ function Hero() {
             <span className="typed">{typed}</span>
             <span className="cursor" aria-hidden="true">|</span>
           </h2>
-          <p className="hero-tagline">
-            En formé à <span className="accent">Holberton School France</span> · Disponible dès <strong>maintenant</strong>
-          </p>
+          <SafeHtml as="p" className="hero-tagline" html={SITE.tagline} />
 
           <div className="hero-cta">
             <a href="#projects" className="btn btn-primary">Voir mes projets</a>

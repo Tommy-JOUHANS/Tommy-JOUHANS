@@ -9,8 +9,9 @@ export const SITE = {
   name: 'Tommy JOUHANS',
   greeting: 'Bonjour, je suis',
   role: 'Technicien Informatique et Réseaux (Compétences Dev Junior)',
+  // Rendu via <SafeHtml> + DOMPurify dans Hero.jsx (contenu riche : accent + gras).
   tagline:
-    "Formé à Holberton School France · Disponible dès maintenant",
+    'Formé à <span class="accent">Holberton School France</span> · Disponible dès <strong>maintenant</strong>',
   email: 'tommy.jouhans@outlook.com',
   phone: '06.41.26.02.66',
   phoneHref: '+33641260266',
