@@ -39,6 +39,13 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 CORS_ALLOWED_ORIGINS = [
     "https://www.tommy-jouhans.fr",
     "https://tommy-jouhans.fr",
+    # Serveur de dev Vite (npm run dev / npm run preview) : endpoint public
+    # en lecture seule, autoriser localhost ne pose pas de risque de sécurité
+    # et permet d'afficher les vraies stats QR pendant le développement.
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:4173",
 ]
 
 GETQR_STATS_URL = os.getenv("GETQR_STATS_URL")
