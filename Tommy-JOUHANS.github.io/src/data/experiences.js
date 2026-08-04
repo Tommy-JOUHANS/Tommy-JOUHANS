@@ -17,7 +17,7 @@ export const EXPERIENCES = [
     id: 'autogrill',
     date: 'Sept. 2015 – Juin 2025',
     title: 'Technicien informatique à distance',
-    place: 'Support et maintenance informatique – Autogrill',
+    place: 'Support et maintenance informatique, Autogrill',
     accent: false,
   },
   {
