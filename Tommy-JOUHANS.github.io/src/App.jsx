@@ -390,7 +390,7 @@ function About() {
           <TimelineItem
                 title="Recommandation de Fabien Chavonet (SWE), de Maneh Mahamed Said et Ornela Tobiet (Directrice Campus)"
                 place="Holberton School France, Dijon"
-                image={`${import.meta.env.BASE_URL}lettre_recommandation.jpeg`}
+                image={`${import.meta.env.BASE_URL}lettre_recommandation.jpg`}
               />
         </div>
       </div>
@@ -530,7 +530,7 @@ function Resume() {
                 date="2025 – Présent"
                 title="Titre RNCP niveau 5 : Développeur web et web mobile"
                 place="Holberton School France, Dijon"
-                image={`${import.meta.env.BASE_URL}Holberton.jpeg`}
+                image={`${import.meta.env.BASE_URL}Holberton.jpg`}
               />
 
               <TimelineItem
