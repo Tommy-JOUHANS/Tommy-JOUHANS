@@ -10,7 +10,7 @@ export const SITE = {
   greeting: 'Bonjour, je suis',
   role: 'Technicien Informatique et Réseaux (Compétences Dev Junior)',
   tagline:
-    "En formé à Holberton School France · Disponible dès maintenant",
+    "Formé à Holberton School France · Disponible dès maintenant",
   email: 'tommy.jouhans@outlook.com',
   phone: '06.41.26.02.66',
   phoneHref: '+33641260266',
