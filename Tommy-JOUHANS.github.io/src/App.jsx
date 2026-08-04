@@ -386,13 +386,6 @@ function About() {
             </ul>
           </div>
         </div>
-        <div className="recommandation"><b>Recommandation par des references professionnelles et des mentors de Holberton School France</b>
-          <TimelineItem
-                title="Recommandation de Fabien Chavonet (SWE), de Maneh Mahamed Said et Ornela Tobiet (Directrice Campus)"
-                place="Holberton School France, Dijon"
-                image={`${import.meta.env.BASE_URL}lettre_recommandation.jpg`}
-              />
-        </div>
       </div>
     </section>
   )
@@ -516,71 +509,106 @@ function ProjectCard({ project }) {
 }
 
 
-
 function Resume() {
   return (
     <section id="resume" className="section section-alt">
       <div className="container">
         <SectionTitle number="04" title="Parcours & CV" />
+
         <div className="resume-grid">
           <div className="timeline-col">
-            <h3 className="timeline-heading"><GraduationCap size={20} /> Formation</h3>
+            <h3 className="timeline-heading">
+              <GraduationCap size={20} />
+              Formation
+            </h3>
+
             <div className="timeline">
               <TimelineItem
                 date="2025 – Présent"
                 title="Titre RNCP niveau 5 : Développeur web et web mobile"
                 place="Holberton School France, Dijon"
-                image={`${import.meta.env.BASE_URL}Holberton.jpg`}
+                image={`${import.meta.env.BASE_URL}holberton.jpeg`}
+                imageAlt="Certificat Holberton Foundations of Computer Science"
+                accent
               />
 
               <TimelineItem
                 date="2012 – 2015"
                 title="BTS IRIS : Informatique et Réseaux pour l'Industrie"
                 place="Lycée Fénelon Sainte-Marie, Lons-le-Saunier"
-                image={`${import.meta.env.BASE_URL}bts_iris.jpg`}
+                image={`${import.meta.env.BASE_URL}bts-iris.jpg`}
+                imageAlt="Diplôme BTS IRIS"
               />
+
               <TimelineItem
                 date="2009 – 2012"
                 title="Bac Pro SEN : Systèmes Électroniques et Numériques"
                 place="Lycée professionnel Saint-Joseph, Bourg-en-Bresse"
-                image={`${import.meta.env.BASE_URL}bac_pro_sen.jpg`}
+                image={`${import.meta.env.BASE_URL}bac-pro-sen.jpg`}
+                imageAlt="Diplôme Bac Pro SEN"
               />
             </div>
           </div>
 
           <div className="timeline-col">
-            <h3 className="timeline-heading"><Briefcase size={20} /> Expériences</h3>
+            <h3 className="timeline-heading">
+              <Briefcase size={20} />
+              Expériences
+            </h3>
+
             <div className="timeline">
               <TimelineItem
                 date="Oct. 2025 – Présent"
                 title="Développeur web et web mobile en formation"
                 place="Holberton School France, Dijon"
-                image={`${import.meta.env.BASE_URL}holberton.jpg`}
+                accent
               />
+
               <TimelineItem
                 date="Jul. – Sept. 2025"
                 title="Technicien maintenance et recyclage informatique"
                 place="Micronov, Bourg-en-Bresse"
               />
+
               <TimelineItem
-                date="Sept. 2015 - Juin 2025"
-                title="Technicien informatique à distance (Support et maintenance)"
-                place="Autogrill au site d’Arlay (A39), rattaché au siège social de Marseille (télétravail)"
+                date="Sept. 2015 – Juin 2025"
+                title="Technicien informatique à distance"
+                place="Support et maintenance informatique – Autogrill"
               />
+
               <TimelineItem
                 date="2010 – 2013"
-                title="Technicien support et maintenance (Stages Bac Pro)"
-                place="Grand Bourg Habitat, Préfecture de l'Ain, SDIS 01, Dynacité, Centre Hospitalier de Bourg-en-Bresse"
+                title="Technicien support et maintenance"
+                place="Grand Bourg Habitat, Préfecture de l'Ain, SDIS 01, Dynacité et Centre hospitalier"
               />
             </div>
           </div>
         </div>
 
+        <div className="recommendation-section">
+          <h3 className="timeline-heading">
+            <Briefcase size={20} />
+            Recommandation professionnelle
+          </h3>
+
+          <TimelineItem
+            title="Lettre de recommandation de Fabien Chavonet"
+            place="Coach Software Engineer – Holberton School Dijon"
+            image={`${import.meta.env.BASE_URL}lettre-recommandation.jpeg`}
+            imageAlt="Lettre de recommandation professionnelle"
+          />
+        </div>
+
         <div className="resume-download">
           <p>Besoin d'une version complète ?</p>
-          {/* Place ton CV PDF dans /public/cv-tommy-jouhans.pdf */}
-          <a href={`${import.meta.env.BASE_URL}cv-tommy-jouhans.pdf`} download className="btn btn-primary">
-            <Download /> Télécharger mon CV (PDF)
+
+          <a
+            href={`${import.meta.env.BASE_URL}cv-tommy-jouhans.pdf`}
+            download
+            className="btn btn-primary"
+          >
+            <Download size={20} />
+            Télécharger mon CV (PDF)
           </a>
         </div>
       </div>
@@ -588,102 +616,87 @@ function Resume() {
   )
 }
 
-
-function TimelineItem({ date, title, place, accent, image }) {
+function TimelineItem({
+  date,
+  title,
+  place,
+  accent = false,
+  image = null,
+  imageAlt = '',
+}) {
   const [zoom, setZoom] = useState(false)
+
+  useEffect(() => {
+    if (!zoom) return undefined
+
+    function handleEscape(event) {
+      if (event.key === 'Escape') {
+        setZoom(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [zoom])
 
   return (
     <div className={`timeline-item ${accent ? 'timeline-accent' : ''}`}>
-      <span className="timeline-date mono">{date}</span>
+      {date && <span className="timeline-date mono">{date}</span>}
+
       <strong className="timeline-title">{title}</strong>
-      <span className="timeline-place">{place}</span>
+
+      {place && <span className="timeline-place">{place}</span>}
 
       {image && (
-        <img
-          src={image}
-          alt={title}
+        <button
+          type="button"
+          className="timeline-image-button"
           onClick={() => setZoom(true)}
-          style={{
-            width: 200,
-            transform: 'rotate(90deg)',
-            marginLeft: 40,
-            cursor: 'zoom-in',
-          }}
-        />
-      )}
-
-      {zoom && (
-        <div
-          onClick={() => setZoom(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.85)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-            cursor: 'zoom-out',
-          }}
+          aria-label={`Agrandir : ${imageAlt || title}`}
         >
           <img
             src={image}
-            alt={title}
-            style={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              transform: 'rotate(90deg)',
-            }}
+            alt={imageAlt || title}
+            className="timeline-image"
+            loading="lazy"
+          />
+          <span className="timeline-image-caption">
+            Cliquer pour agrandir
+          </span>
+        </button>
+      )}
+
+      {zoom && image && (
+        <div
+          className="image-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={imageAlt || title}
+          onClick={() => setZoom(false)}
+        >
+          <button
+            type="button"
+            className="image-modal-close"
+            onClick={() => setZoom(false)}
+            aria-label="Fermer l'image"
+          >
+            ×
+          </button>
+
+          <img
+            src={image}
+            alt={imageAlt || title}
+            className="image-modal-content"
+            onClick={event => event.stopPropagation()}
           />
         </div>
       )}
     </div>
-  )
-}
-
-function Contact() {
-  return (
-    <section id="contact" className="section">
-      <div className="container">
-        <SectionTitle number="05" title="Contact" />
-        <div className="contact-wrapper">
-          <p className="contact-intro">
-            Tu as un projet, une opportunité d'alternance ou simplement envie d'échanger ?
-            N'hésite pas à me contacter !
-          </p>
-          <div className="contact-cards">
-            <a href="mailto:tommy.jouhans@outlook.com" className="contact-card">
-              <EmailIcon size={28} />
-              <div>
-                <strong>Email</strong>
-                <span>tommy.jouhans@outlook.com</span>
-              </div>
-            </a>
-            <a href="tel:0641260266" className="contact-card">
-              <Phone size={28} />
-              <div>
-                <strong>Téléphone</strong>
-                <span>06.41.26.02.66</span>
-              </div>
-            </a>
-            <a href="https://github.com/Tommy-JOUHANS" target="_blank" rel="noopener" className="contact-card">
-              <GitHubIcon size={28} />
-              <div>
-                <strong>GitHub</strong>
-                <span>github.com/Tommy-JOUHANS</span>
-              </div>
-            </a>
-            <a href="https://linkedin.com/in/tommy-jouhans-pro" target="_blank" rel="noopener" className="contact-card">
-              <LinkedInIcon size={28} />
-              <div>
-                <strong>LinkedIn</strong>
-                <span>linkedin.com/in/tommy-jouhans-pro</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
   )
 }
 
