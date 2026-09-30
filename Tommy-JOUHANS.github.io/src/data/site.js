@@ -8,7 +8,7 @@
 export const SITE = {
   name: 'Tommy JOUHANS',
   greeting: 'Bonjour, je suis',
-  role: 'Technicien Informatique et Réseaux (Compétences Dev Junior)',
+  role: 'Développeur Full-Stack',
   // Rendu via <SafeHtml> + DOMPurify dans Hero.jsx (contenu riche : accent + gras).
   tagline:
     'Formé à <span class="accent">Holberton School France</span> · Disponible dès <strong>maintenant</strong>',
