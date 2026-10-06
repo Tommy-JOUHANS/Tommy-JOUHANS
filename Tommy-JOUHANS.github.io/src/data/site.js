@@ -8,10 +8,10 @@
 export const SITE = {
   name: 'Tommy JOUHANS',
   greeting: 'Bonjour, je suis',
-  role: 'Développeur Full-Stack',
+  role: 'Développeur Full-Stack en formation',
   // Rendu via <SafeHtml> + DOMPurify dans Hero.jsx (contenu riche : accent + gras).
   tagline:
-    'Formé à <span class="accent">Holberton School France</span> · Disponible dès <strong>maintenant</strong>',
+    'Actuellement en formation à <span class="accent">CODA à Dijon</span> · Disponible dès <strong>maintenant</strong>',
   email: 'tommy.jouhans@outlook.com',
   phone: '06.41.26.02.66',
   phoneHref: '+33641260266',
@@ -79,7 +79,7 @@ export const CONTACT_CARDS = [
 
 // Contenu riche (liens, gras) rendu via <SafeHtml> + DOMPurify.
 export const WELCOME_HTML = [
-  `Bienvenue à tous! Je m'appelle Tommy JOUHANS, je suis technicien en informatique et développeur web et mobile! Ici, vous trouverez un aperçu de mes compétences, de mes projets et de mon parcours professionnel. Je suis passionné par le développement web et mobile, et je cherche constamment à améliorer mes compétences et à relever de nouveaux défis.`,
+  `Bienvenue à tous! Je m'appelle Tommy JOUHANS, je suis Développeur Full-Stack en formation! Ici, vous trouverez un aperçu de mes compétences, de mes projets et de mon parcours professionnel. Je suis passionné par le développement web et mobile, et je cherche constamment à améliorer mes compétences et à relever de nouveaux défis.`,
   `N'hésitez pas à parcourir les différentes sections pour en savoir plus sur moi et mes réalisations. Si vous avez des questions ou souhaitez collaborer, n'hésitez pas à me contacter !`,
   `Par exemple, je suis fier de partager que notre portfolio CyberAudit & Solutions vient d'être validé à 87% à Holberton School Dijon !`,
   `Un projet full-stack de A à Z : backend Django/DRF, authentification JWT, génération de rapports PDF avec WeasyPrint + Celery, interface React connectée à une vraie API REST. Un grand merci à <a href="https://www.linkedin.com/in/james-roussel-7311592b9/" target="_blank" rel="noopener noreferrer">James</a> (mon coéquipier) qui a porté ce projet avec moi du début à la fin, ainsi qu'à <a href="https://www.linkedin.com/in/fchavonet/" target="_blank" rel="noopener noreferrer">Fabien</a> (SWE), <a href="https://www.linkedin.com/in/ornella-tobiet/" target="_blank" rel="noopener noreferrer">Ornela</a> (Directrice campus) et <a href="https://www.linkedin.com/in/maneh21/" target="_blank" rel="noopener noreferrer">Maneh</a> (SSM) pour leur accompagnement tout au long de la formation.`,
@@ -96,9 +96,9 @@ export const WELCOME_IMAGE = {
 
 // Bio (About) : paragraphes riches (gras + accent) rendus via SafeHtml.
 export const ABOUT_HTML = [
-  `Développeur web et mobile en formation à <strong>Holberton School France</strong> (Dijon), je possède de solides bases en programmation C, JavaScript ES6, Python, Shell et un fort intérêt pour le domaine de la <span class="accent">Cybersecurité</span> et du <span class="accent">Full-Stack</span>.`,
+  `Développeur Full-Stack en formation à <strong>CODA à Dijon</strong> (Dijon), je possède de solides bases en programmation C, JavaScript ES6, Python, Shell et un fort intérêt pour le domaine de la <span class="accent">Cybersecurité</span> et du <span class="accent">Full-Stack</span>.`,
   `Rigoureux et motivé, j'oriente mon parcours vers le développement de modèles d'apprentissage automatique, l'analyse de données et l'intégration de solutions intelligentes.`,
-  `Je recherche une <strong>alternance de deux ans</strong> (dès septembre 2026) pour renforcer mes compétences en Full-Stack et en Cybersecurité, en traitement de données et en déploiement de modèles au sein d'un environnement professionnel innovant. Afin d'avoir une opportunité de travailler au sein d'une équipe dynamique.`,
+  `Je recherche une <strong>alternance de deux ans</strong> (Disponible dès maintenant et en urgence) pour renforcer mes compétences en Full-Stack et en Cybersecurité, en traitement de données et en déploiement de modèles au sein d'un environnement professionnel innovant. Afin d'avoir une opportunité de travailler au sein d'une équipe dynamique.`,
 ]
 
 export const ABOUT_DETAILS = [
